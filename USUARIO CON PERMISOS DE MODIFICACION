@@ -2,3 +2,50 @@
 # CREAR USUARIO
 
 CREATE USER 'editor_grupo'@'localhost' IDENTIFIED BY '12345';
+
+# Como ya aparece en las primeras tablas se debe primero borrar:
+
+DROP USER 'editor_grupo'@'localhost';
+
+# Se vuelve a crear otra vez
+
+CREATE USER 'editor_grupo'@'localhost' IDENTIFIED BY '12345';
+
+# Se generan los permisos del Usuario 
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON biblioteca_db.*
+TO 'editor_grupo'@'localhost';
+
+# Se actulizan y verifican 
+
+FLUSH PRIVILEGES;
+
+SHOW GRANTS FOR 'editor_grupo'@'localhost';
+
+
+# Scrips de Pruebas para el video 
+
+> Insertar 
+
+INSERT INTO Books
+(Title, Author, Genre, PublicationYear, AvailableCopies, CategoryID)
+VALUES
+('Curso SQL','Juan Perez','Education',2024,5,10);
+
+> Actualizar
+
+UPDATE Books
+SET Title='Curso SQL Avanzado'
+WHERE BookID=1;
+
+> Eliminar
+
+DELETE FROM Books
+WHERE BookID=2;
+
+> Creacion de tablas 
+
+CREATE TABLE prueba(
+id INT
+);
