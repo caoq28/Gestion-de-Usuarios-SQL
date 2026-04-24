@@ -1,0 +1,4 @@
+
+# CREAR USUARIO
+
+CREATE USER 'editor_grupo'@'localhost' IDENTIFIED BY '12345';
